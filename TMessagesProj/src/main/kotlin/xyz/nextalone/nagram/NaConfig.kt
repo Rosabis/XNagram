@@ -961,7 +961,7 @@ object NaConfig {
         addConfig(
             "EventLog",
             ConfigItem.configTypeBool,
-            false
+            true
         )
     val shortcutsStatistics =
         addConfig(
