@@ -119,7 +119,6 @@ import java.net.URLEncoder;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.channels.FileChannel;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -503,7 +502,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
         public boolean isCropped;
         public int ttl;
         public long effectId;
-        public boolean highQuality = NaConfig.INSTANCE.getSendHighQualityPhoto().Bool();
+        public boolean highQuality;
 
         public CropState cropState;
 
@@ -532,7 +531,7 @@ public class MediaController implements AudioManager.OnAudioFocusChangeListener,
             savedFilterState = null;
             stickers = null;
             cropState = null;
-            highQuality = NaConfig.INSTANCE.getSendHighQualityPhoto().Bool();
+            highQuality = false;
         }
 
         public void resetEdit() {

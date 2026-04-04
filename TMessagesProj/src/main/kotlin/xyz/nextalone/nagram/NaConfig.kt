@@ -1005,12 +1005,6 @@ object NaConfig {
             ConfigItem.configTypeBool,
             true
         )
-    val sendHighQualityPhoto =
-        addConfig(
-            "SendHighQualityPhoto",
-            ConfigItem.configTypeBool,
-            true
-        )
     val groupedMessageMenu =
         addConfig(
             "GroupedMessageMenu",
