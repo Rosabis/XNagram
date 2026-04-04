@@ -13368,6 +13368,7 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
                     presentFragment(new ContactsActivity(args));
                 });
             }
+            io.addGapIf(hideBottomNavigationBar);
             if (hideBottomNavigationBar) {
                 io.add(R.drawable.menu_recent, getString(R.string.RecentChats), () -> {
                     io.dismiss();
@@ -13389,6 +13390,20 @@ public class DialogsActivity extends BaseFragment implements NotificationCenter.
             if (hideBottomNavigationBar && NaConfig.INSTANCE.getShowAddToBookmark().Bool()) {
                 io.add(R.drawable.msg_fave, getString(R.string.BookmarksManager), () -> presentFragment(new BookmarkManagerActivity()));
             }
+            if (NekoConfig.showGhostInDrawer.Bool()) {
+                final String ghostModeText = NekoConfig.isGhostModeActive()
+                        ? getString(R.string.DisableGhostMode)
+                        : getString(R.string.EnableGhostMode);
+                io.add(R.drawable.ayu_ghost, ghostModeText, () -> presentFragment(new GhostModeActivity()), () -> {
+                    final String toggleMsg = NekoConfig.isGhostModeActive()
+                            ? getString(R.string.GhostModeDisabled)
+                            : getString(R.string.GhostModeEnabled);
+                    NekoConfig.toggleGhostMode();
+                    BulletinFactory.of(this).createSuccessBulletin(toggleMsg).show();
+                    NotificationCenter.getInstance(currentAccount).postNotificationName(NotificationCenter.mainUserInfoChanged);
+                });
+            }
+            io.addGapIf(hideBottomNavigationBar);
             if (ApplicationLoader.applicationLoaderInstance != null) {
                 ApplicationLoader.applicationLoaderInstance.addItemOptions(io);
             }
