@@ -320,4 +320,13 @@
     <string name="StickerCopied">Stiker disalin ke papan klip.</string>
     <string name="StrokeOnViews">Efek silau</string>
     <string name="HideBottomNavigationBar">Sembunyikan Bilah Navigasi Bawah</string>
+    <string name="TranslatorMode">Dengan Teks Asli</string>
+    <string name="TranslatorWithOriginalTextOff">Mati</string>
+    <string name="TranslatorWithOriginalTextManualOnly">Hanya Manual</string>
+    <string name="TranslatorWithOriginalTextOn">Nyala</string>
+    <string name="CenterActionBarTitleOn">Nyala</string>
+    <string name="CenterActionBarTitleOff">Mati</string>
+    <string name="TabletModeOn">Nyala</string>
+    <string name="TabletModeOff">Mati</string>
+    <string name="HideDialogsSearchField">Sembunyikan Kotak Pencarian</string>
 </resources>

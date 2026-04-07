@@ -71,6 +71,8 @@
     <string name="UnshadowBan">解除靜默封鎖</string>
     <string name="ShadowBanAdded">已新增到**使用者過濾器**。</string>
     <string name="ShadowBanRemoved">已從**使用者過濾器**中移除。</string>
+    <string name="ShadowBanChannelAdded">已新增至**頻道過濾器**。</string>
+    <string name="ShadowBanChannelRemoved">已從**頻道過濾器**中移除。</string>
     <string name="botCommandConfirmTitle">確認傳送</string>
     <string name="botCommandConfirmText">您確定要發送此指令嗎？\n\n%s</string>
     <string name="MessageSavingSaveMedia">儲存媒體</string>
@@ -328,4 +330,5 @@
     <string name="CenterActionBarTitleOff">關閉</string>
     <string name="TabletModeOn">開啟</string>
     <string name="TabletModeOff">關閉</string>
+    <string name="HideDialogsSearchField">隱藏搜尋欄</string>
 </resources>
