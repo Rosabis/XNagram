@@ -12195,7 +12195,7 @@ public class ChatActivity extends BaseFragment implements
                 updatePinnedMessageView(true);
                 return;
             }
-            builder.addItem(LocaleController.getString(R.string.HidePinnedMessages), R.drawable.msg_cancel, c -> {
+            builder.addItem(LocaleController.getString(R.string.HidePinnedMessagesNoCaps), R.drawable.menu_hide_gift, c -> {
                 SharedPreferences preferences = MessagesController.getNotificationsSettings(currentAccount);
                 if (chatInfo != null) {
                     preferences.edit().putInt("pin_" + dialog_id, chatInfo.pinned_msg_id).apply();
@@ -12228,12 +12228,12 @@ public class ChatActivity extends BaseFragment implements
             }
             BottomBuilder builder = new BottomBuilder(getParentActivity());
             if (allowPin) {
-                builder.addItem(LocaleController.getString(R.string.UnpinAllMessages), R.drawable.msg_unpin, true, c -> {
+                builder.addItem(LocaleController.getString(R.string.UnpinAllMessagesNoCaps), R.drawable.msg_unpin, true, c -> {
                     getMessagesController().unpinAllMessages(currentChat, currentUser);
                     return Unit.INSTANCE;
                 });
             }
-            builder.addItem(LocaleController.getString(R.string.HidePinnedMessages), R.drawable.msg_cancel, c -> {
+            builder.addItem(LocaleController.getString(R.string.HidePinnedMessagesNoCaps), R.drawable.menu_hide_gift, c -> {
                 SharedPreferences preferences = MessagesController.getNotificationsSettings(currentAccount);
                 if (chatInfo != null) {
                     preferences.edit().putInt("pin_" + dialog_id, chatInfo.pinned_msg_id).apply();
