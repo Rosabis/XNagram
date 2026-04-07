@@ -129,6 +129,7 @@
     <string name="DisableGhostMode">Вимкнути привида</string>
     <string name="GhostModeEnabled">Режим \"привид\" увімкнено</string>
     <string name="GhostModeDisabled">Режим \"привид\" вимкнено</string>
+    <string name="GhostModeInDrawer">Швидкий доступ</string>
     <string name="GhostModeStatusIndicator">Індикатор режиму «привид»</string>
     <string name="DontSendReadMessagePackets">Не читати повідомлення</string>
     <string name="DontReadStoriesPackets">Не читати історії</string>
@@ -319,4 +320,13 @@
     <string name="StickerCopied">Стікер скопійовано в буфер обміну.</string>
     <string name="StrokeOnViews">Ефекти відблисків</string>
     <string name="HideBottomNavigationBar">Приховати нижню панель навігації</string>
+    <string name="TranslatorMode">З оригінальним текстом</string>
+    <string name="TranslatorWithOriginalTextOff">Вимкнено</string>
+    <string name="TranslatorWithOriginalTextManualOnly">Тільки вручну</string>
+    <string name="TranslatorWithOriginalTextOn">Увімкнено</string>
+    <string name="CenterActionBarTitleOn">Увімкнено</string>
+    <string name="CenterActionBarTitleOff">Вимкнено</string>
+    <string name="TabletModeOn">Увімкнено</string>
+    <string name="TabletModeOff">Вимкнено</string>
+    <string name="HideDialogsSearchField">Приховати поле пошуку</string>
 </resources>

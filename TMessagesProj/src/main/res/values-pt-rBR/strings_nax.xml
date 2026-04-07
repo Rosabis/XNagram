@@ -320,4 +320,13 @@
     <string name="StickerCopied">Sticker copiado para a área de transferência.</string>
     <string name="StrokeOnViews">Efeitos de brilho</string>
     <string name="HideBottomNavigationBar">Ocultar barra de navegação inferior</string>
+    <string name="TranslatorMode">Com texto original</string>
+    <string name="TranslatorWithOriginalTextOff">Desativado</string>
+    <string name="TranslatorWithOriginalTextManualOnly">Apenas manual</string>
+    <string name="TranslatorWithOriginalTextOn">Ativado</string>
+    <string name="CenterActionBarTitleOn">Ativado</string>
+    <string name="CenterActionBarTitleOff">Desativado</string>
+    <string name="TabletModeOn">Ativado</string>
+    <string name="TabletModeOff">Desativado</string>
+    <string name="HideDialogsSearchField">Ocultar barra de pesquisa</string>
 </resources>
