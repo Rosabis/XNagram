@@ -84,6 +84,8 @@
     <string name="UnshadowBan">Unshadow Ban</string>
     <string name="ShadowBanAdded">Added to **user filters**.</string>
     <string name="ShadowBanRemoved">Removed from **user filters**.</string>
+    <string name="ShadowBanChannelAdded">Added to **channel filters**.</string>
+    <string name="ShadowBanChannelRemoved">Removed from **channel filters**.</string>
     <string name="botCommandConfirmTitle">Send Command</string>
     <string name="botCommandConfirmText">Do you want to send this command?\n\n%s</string>
     <string name="MessageSavingSaveMedia">Save Media</string>

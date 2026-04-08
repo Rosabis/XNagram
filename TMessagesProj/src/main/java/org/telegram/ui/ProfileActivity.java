@@ -639,7 +639,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
     private final static int message_filter = 103;
     private final static int clear_cache = 104;
     private final static int add_to_folder = 105;
-    private final static int block_channel = 106;
     private final static int shadow_ban = 107;
 
     private Rect rect = new Rect();
@@ -2598,8 +2597,6 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                     finishFragment();
                 } else if (id == block_contact) {
                     onBlockContactClicked(false);
-                } else if (id == block_channel) {
-                    onBlockChannelClicked();
                 } else if (id == shadow_ban) {
                     onShadowBanClicked();
                 } else if (id == add_contact) {
@@ -12465,7 +12462,7 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
                         otherItem.addSubItem(channel_stories, R.drawable.msg_archive, LocaleController.getString(R.string.OpenChannelArchiveStories));
                         addStoryAction = true;
                     } else {
-                        otherItem.addSubItem(block_channel, R.drawable.msg_block, !channelBlocked ? getString(R.string.BlockChannel) : getString(R.string.UnblockChannel));
+                        otherItem.addSubItem(shadow_ban, R.drawable.hide_title, !channelBlocked ? getString(R.string.ShadowBan) : getString(R.string.UnshadowBan));
                     }
                     if (ChatObject.isPublic(chat)) {
                         otherItem.addSubItem(share, R.drawable.msg_share, LocaleController.getString(R.string.BotShare));
@@ -17488,43 +17485,28 @@ public class ProfileActivity extends BaseFragment implements NotificationCenter.
         editText.setSelection(0, editText.getText().length());
     }
 
-    private void onBlockChannelClicked() {
+    private void onShadowBanClicked() {
         TLRPC.Chat chat = getMessagesController().getChat(chatId);
-        if (chat == null) {
+        if (chat != null && ChatObject.isChannelAndNotMegaGroup(chat)) {
+            boolean added = !channelBlocked;
+            if (added) {
+                AyuFilter.blockPeer(-chatId);
+            } else {
+                AyuFilter.unblockPeer(-chatId);
+            }
+            channelBlocked = added;
+            createActionBarMenu(true);
+            if (BulletinFactory.canShowBulletin(this)) {
+                Drawable drawable = ContextCompat.getDrawable(getParentActivity(), added ? R.drawable.msg_block2 : R.drawable.msg_block);
+                if (drawable != null) {
+                    drawable = drawable.mutate();
+                    drawable.setColorFilter(new PorterDuffColorFilter(getThemedColor(Theme.key_undo_infoColor), PorterDuff.Mode.SRC_IN));
+                }
+                CharSequence text = AndroidUtilities.replaceSingleTag(getString(added ? R.string.ShadowBanChannelAdded : R.string.ShadowBanChannelRemoved), () -> presentFragment(ShadowBanListActivity.forChannels()));
+                BulletinFactory.of(this).createSimpleBulletin(drawable, text).show();
+            }
             return;
         }
-        if (ChatObject.isChannelAndNotMegaGroup(chat)) {
-            if (channelBlocked) {
-                AyuFilter.unblockPeer(-chatId);
-                channelBlocked = false;
-                if (BulletinFactory.canShowBulletin(ProfileActivity.this)) {
-                    BulletinFactory.createBanChannelBulletin(ProfileActivity.this, false).show();
-                }
-                createActionBarMenu(true);
-            } else {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getParentActivity(), resourcesProvider);
-                builder.setTitle(getString(R.string.BlockChannel));
-                builder.setMessage(AndroidUtilities.replaceTags(formatString(R.string.AreYouSureBlockContact2, chat.title)));
-                builder.setPositiveButton(LocaleController.getString(R.string.Block), (dialogInterface, i) -> {
-                    AyuFilter.blockPeer(-chatId);
-                    channelBlocked = true;
-                    if (BulletinFactory.canShowBulletin(ProfileActivity.this)) {
-                        BulletinFactory.createBanChannelBulletin(ProfileActivity.this, true).show();
-                    }
-                    createActionBarMenu(true);
-                });
-                builder.setNegativeButton(LocaleController.getString(R.string.Cancel), null);
-                AlertDialog dialog = builder.create();
-                showDialog(dialog);
-                TextView button = (TextView) dialog.getButton(DialogInterface.BUTTON_POSITIVE);
-                if (button != null) {
-                    button.setTextColor(getThemedColor(Theme.key_text_RedBold));
-                }
-            }
-        }
-    }
-
-    private void onShadowBanClicked() {
         if (userId == 0L) {
             return;
         }
