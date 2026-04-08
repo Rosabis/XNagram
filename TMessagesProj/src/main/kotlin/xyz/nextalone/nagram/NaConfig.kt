@@ -1229,6 +1229,12 @@ object NaConfig {
             ConfigItem.configTypeBool,
             false
         )
+    val hideDialogsSearchField =
+        addConfig(
+            "HideDialogsSearchField",
+            ConfigItem.configTypeBool,
+            false
+        )
 
     val preferredTranslateTargetLangList = ArrayList<String>()
     fun updatePreferredTranslateTargetLangList() {
