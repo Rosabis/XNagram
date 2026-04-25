@@ -1474,21 +1474,6 @@ public final class BulletinFactory {
     }
 
     @CheckResult
-    public static Bulletin createBanChannelBulletin(BaseFragment fragment, boolean banned) {
-        final Bulletin.LottieLayout layout = new Bulletin.LottieLayout(fragment.getParentActivity(), fragment.getResourceProvider());
-        final String text;
-        if (banned) {
-            layout.setAnimation(R.raw.ic_ban, "Hand");
-            text = LocaleController.getString(R.string.ChannelBlocked);
-        } else {
-            layout.setAnimation(R.raw.ic_unban, "Main", "Finger 1", "Finger 2", "Finger 3", "Finger 4");
-            text = LocaleController.getString(R.string.ChannelUnblocked);
-        }
-        layout.textView.setText(AndroidUtilities.replaceTags(text));
-        return Bulletin.make(fragment, layout, Bulletin.DURATION_SHORT);
-    }
-
-    @CheckResult
     public static Bulletin createDissableSharingBulletin(BaseFragment fragment, String pendingUsername, boolean sharingDisabled) {
         final Bulletin.LottieLayout layout = new Bulletin.LottieLayout(fragment.getParentActivity(), fragment.getResourceProvider());
         final String text;
